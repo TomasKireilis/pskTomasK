@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Model
@@ -17,6 +18,9 @@ public class Samurais {
 
     @Inject
     private SamuraisDAO samuraisDAO;
+
+    @Inject
+    private SamuraisForBattle samuraisForBattle;
 
     @Getter
     @Setter

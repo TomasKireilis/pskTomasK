@@ -36,18 +36,4 @@ public class UpdateBattle implements Serializable {
         Long playerId = Long.parseLong(requestParameters.get("samuraiId"));
         this.samurai = samuraisDAO.findOne(playerId);
     }
-
-    /*
-    @Transactional
-    @LoggedInvocation
-    public String updatePlayerJerseyNumber() {
-        try{
-            samuraisDAO.update(this.samurai);
-        } catch (OptimisticLockException e) {
-            return "/samuraiDetails.xhtml?faces-redirect=true&playerId=" + this.samurai.getId() + "&error=optimistic-lock-exception";
-        }
-        return "battleDetails.xhtml?teamId=" + this.player.getTeam().getId() + "&faces-redirect=true";
-    }
-
-     */
 }

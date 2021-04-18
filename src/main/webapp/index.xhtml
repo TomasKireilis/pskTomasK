@@ -9,11 +9,11 @@
     <h2>Battles:</h2>
     <ul>
         <ui:repeat value="#{battles.allBattles}" var="battle">
-            <li><h:link value="#{battle.id}" outcome="battleDetails?battleId=#{battle.id}" /></li>
+            <li><h:link value="#{battle.id} #{battle.name}" outcome="battleDetails?battleId=#{battle.id}" /></li>
         </ui:repeat>
     </ul>
     <h:form>
-     <!--   <h:inputText value="#{battle.battleToCreate.name}" required="true" /> -->
+        <h:inputText value="#{battles.battleToCreate.name}" onchange="#{battles.updateBattleName(value)}" required="true" />
         <h:commandButton value="Add new battle" action="#{battles.createBattle}" />
     </h:form>
 

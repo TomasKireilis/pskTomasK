@@ -21,8 +21,5 @@ public class SamuraiQuote {
 
     private Long samuraiId;
 
-    private String name;
-
-    @Lob
-    private byte[] quote;
+    private String text;
 }

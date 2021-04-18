@@ -3,31 +3,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://java.sun.com/jsf/core">
 <h:head/>
 <h:body>
-    <h2>Samurais in #{samuraisForBattle.battle.id} battle:</h2>
+    <h2>Samurais in #{samuraisForBattle.battle.name} battle:</h2>
     <ol>
         <ui:repeat value="#{samuraisForBattle.battle.samurais}" var="samurai">
             <li>
-                <h:link value="#{samurai.name}" outcome="samuraiDetails?samuraiId=#{samurai.id}" />
+                <h:link value="#{samurai.id} #{samurai.name}" outcome="samuraiDetails?samuraiId=#{samurai.id}" />
             </li>
         </ui:repeat>
     </ol>
 
     <h:form>
-        <h:inputText value="#{samuraisForBattle.samuraiIdToBeAdded}" required="true"/>
+        <h:selectOneListbox value="#{samuraisForBattle.samuraiIdToBeAdded}">
+            <f:selectItems value="#{samurais.allSamurais}" var="samurai"
+                           itemLabel="#{samurai.id} #{samurai.name}" itemValue="#{samurai.id}" />
+        </h:selectOneListbox>
         <h:commandButton value="Add new samurai to battle" action="#{samuraisForBattle.addSamurai}">
-            <f:param name="testParam" value="#{samuraisForBattle.battle.id}"/>
         </h:commandButton>
         <input type="hidden" name="battleId" value="#{samuraisForBattle.battle.id}" />
     </h:form>
 
-    <h2>Samurais available:</h2>
+    <h2>Check Samurais data</h2>
     <ul>
         <ui:repeat value="#{samurais.allSamurais}" var="samurai">
-            <li><h:link value="#{samurai.id}" outcome="samuraiDetails?samuraiId=#{samurai.id}" /></li>
+            <li><h:link value="#{samurai.id} #{samurai.name}" outcome="samuraiDetails?samuraiId=#{samurai.id}" /></li>
         </ui:repeat>
     </ul>
 
