@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Samurais:</h2>
+
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{samurais.samuraiToCreate.name}" required="true"/>
+        <h:commandButton value="Add new samurai" action="#{samurais.createSamurai()}">
+            <f:param name="name" value="#{samurais.samuraiToCreate.name}" />
+        </h:commandButton>
+    </h:form>
+
+    <ol>
+        <ui:repeat value="#{samurais.allSamurais}" var="samurai">
+            <li>
+                <h:link value="#{samurai.name}" outcome="samuraiDetails?samuraiId=#{samurai.id}" />
+            </li>
+        </ui:repeat>
+    </ol>
+
+    <h:link outcome="index" value="Back to battles page"/>
+</h:body>
+</html>
