@@ -3,7 +3,6 @@
     <persistence-unit name="SamuraisPU" transaction-type="JTA">
         <jta-data-source>SamuraisDataSource</jta-data-source>
         <properties>
-            <!--<property name="hibernate.hbm2ddl.auto" value="create"/>-->
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>

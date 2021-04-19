@@ -30,9 +30,9 @@ public class UpdateBattle implements Serializable {
 
     @PostConstruct
     private void init() {
-        System.out.println("UpdateSamurai init() called");
         Map<String, String> requestParameters =
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+
         Long playerId = Long.parseLong(requestParameters.get("samuraiId"));
         this.samurai = samuraisDAO.findOne(playerId);
     }
