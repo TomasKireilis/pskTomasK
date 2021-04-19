@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Battles:</h2>
+    <ul>
+        <ui:repeat value="#{battles.allBattles}" var="battle">
+            <li><h:link value="#{battle.id} #{battle.name}" outcome="battleDetails?battleId=#{battle.id}" /></li>
+        </ui:repeat>
+    </ul>
+    <h:form>
+        <h:inputText value="#{battles.battleToCreate.name}" onchange="#{battles.updateBattleName(value)}" required="true" />
+        <h:commandButton value="Add new battle" action="#{battles.createBattle}" />
+    </h:form>
+
+    <h:link outcome="samurais" value="MyBatis implementation"/>
+</h:body>
+
+</html>

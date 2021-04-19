@@ -1,32 +1,34 @@
 package com.tomas.usecases;
 
-import com.tomas.entities.Battle;
-import com.tomas.entities.Samurai;
-import com.tomas.persistence.SamuraisDAO;
+import com.tomas.mybatis.dao.SamuraiMapper;
+
+import com.tomas.mybatis.model.Samurai;
+import com.tomas.services.IdService;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
+import java.io.Console;
 import java.util.List;
 
+
 @Model
+@Getter @Setter
 public class Samurais {
 
     @Inject
-    private SamuraisDAO samuraisDAO;
-
+    private SamuraiMapper samuraisMapper;
     @Inject
-    private SamuraisForBattle samuraisForBattle;
+    private IdService idService;
 
-    @Getter
-    @Setter
+
     private Samurai samuraiToCreate;
 
-    @Getter
+
     private List<Samurai> allSamurais;
 
     @PostConstruct
@@ -37,11 +39,17 @@ public class Samurais {
 
     @Transactional
     public String createSamurai(){
-        this.samuraisDAO.persist(samuraiToCreate);
+        if(samuraiToCreate!=null) {
+//            samuraiToCreate.setId(idService.getId());
+            System.out.println(samuraiToCreate.getId());
+            System.out.println(samuraiToCreate.getName());
+            samuraisMapper.insert(samuraiToCreate);
+            return "samurais?faces-redirect=true";
+        }
         return "samurais?faces-redirect=true";
     }
 
     private void loadAllSamurais(){
-        this.allSamurais = samuraisDAO.loadAll();
+        this.allSamurais = samuraisMapper.selectAll();
     }
 }
