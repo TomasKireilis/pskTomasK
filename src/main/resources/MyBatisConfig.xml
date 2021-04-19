@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="lt.vu.mybatis.model.Samurai" alias="Samurai"/>
-        <typeAlias type="lt.vu.mybatis.model.SamuraiQuote" alias="SamuraiQuote"/>
-        <typeAlias type="lt.vu.mybatis.model.Battle" alias="Battle"/>
+        <typeAlias type="com.tomas.mybatis.model.Samurai" alias="Samurai"/>
+        <typeAlias type="com.tomas.mybatis.model.SamuraiQuote" alias="SamuraiQuote"/>
+        <typeAlias type="com.tomas.mybatis.model.Battle" alias="Battle"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -17,8 +17,8 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mybatis.xml/BattleMapper.xml"/>
-        <mapper resource="mybatis.xml/SamuraiMapper.xml"/>
-        <mapper resource="mybatis.xml/SamuraiQuoteMapper.xml"/>
+        <mapper resource="com/tomas/mybatis/xml/BattleMapper.xml"/>
+        <mapper resource="com/tomas/mybatis/xml/SamuraiMapper.xml"/>
+        <mapper resource="com/tomas/mybatis/xml/SamuraiQuoteMapper.xml"/>
     </mappers>
 </configuration>

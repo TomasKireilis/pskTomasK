@@ -50,19 +50,9 @@ public class SamuraisForBattle implements Serializable {
         }
     }
 
-    public String samuraiAlreadyInBattle(Samurai samurai) {
-        return battle.getSamurais().contains(samurai) ? "true" : "false";
-    }
-
-    public String reload() {
-        return "battleDetails?battleId=" + this.battle.getId();
-    }
-
     @Transactional
     @LoggedInvocation
     public String addSamurai() {
-        Map<String, String> requestParameters =
-                FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 
         try {
             Long id = Long.parseLong(samuraiIdToBeAdded);

@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "SAMURAI")
-@Builder
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -25,10 +25,6 @@ public class Samurai implements Serializable {
     private Long id;
 
     private String name;
-    private Long amount;
-    private Date creationDate;
-    private String description;
-    private BigDecimal price;
 
     @OneToMany(targetEntity = SamuraiQuote.class, cascade=CascadeType.ALL)
     private List<SamuraiQuote> quotes = new ArrayList<>();

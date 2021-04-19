@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="psktomas:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>psktomas</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="psktomas-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="psktomas:war exploded" />
+    </root>
+  </artifact>
+</component>

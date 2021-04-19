@@ -1,7 +1,5 @@
 package com.tomas.usecases;
 
-import com.tomas.entities.Samurai;
-import com.tomas.services.IdService;
 import lombok.Getter;
 import lombok.Setter;
 import com.tomas.entities.Battle;
@@ -18,8 +16,6 @@ public class Battles {
 
     @Inject
     private BattlesDAO battlesDAO;
-    @Inject
-    private IdService idService;
 
     @Getter
     @Setter
@@ -38,6 +34,11 @@ public class Battles {
     public String createBattle(){
         this.battlesDAO.persist(battleToCreate);
         return "index?faces-redirect=true";
+    }
+
+
+    public void updateBattleName(String name){
+        this.battleToCreate.setName(name);
     }
 
     private void loadAllBattles(){

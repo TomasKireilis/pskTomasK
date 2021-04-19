@@ -1,8 +1,9 @@
+
+
 package com.tomas.services;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.io.Serializable;
-import java.util.Random;
 
 @ApplicationScoped
 public class IdService implements Serializable {

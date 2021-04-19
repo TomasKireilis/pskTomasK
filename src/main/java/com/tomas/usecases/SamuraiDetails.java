@@ -4,41 +4,40 @@ import com.tomas.entities.Battle;
 import com.tomas.entities.Samurai;
 import com.tomas.interceptors.LoggedInvocation;
 import com.tomas.persistence.SamuraisDAO;
-import com.tomas.services.ImageService;
+import com.tomas.services.QuotesService;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.servlet.http.Part;
 import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.Map;
 
+@ViewScoped
 @Model
+@Getter @Setter
 public class SamuraiDetails implements Serializable {
 
     @Inject
     private SamuraisDAO samuraisDAO;
     @Inject
-    private ImageService imageService;
+    private QuotesService quoteService;
 
-    @Getter
-    @Setter
+
     private Battle battle;
 
-    @Getter
-    @Setter
+
     private Samurai samurai;
 
-    @Getter
-    @Setter
+
     private Long samuraiIdToBeAdded;
 
-    @Getter
-    @Setter
+
     private Part quoteToBeUploaded;
 
     @PostConstruct
@@ -48,23 +47,25 @@ public class SamuraiDetails implements Serializable {
         String samuraiIdString = requestParameters.get("samuraiId");
 
         if (samuraiIdString != null) {
-            try {
+
                 Long samuraiId = Long.parseLong(samuraiIdString);
-                this.samurai = samuraisDAO.findOne(samuraiId);
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
-            }
+
+                samurai = samuraisDAO.findOne(samuraiId);
+            System.out.println(samurai.getName());
+                if(samurai == null || samurai.getId()==null){throw new IllegalArgumentException();}
+
         }
     }
 
     @Transactional
     @LoggedInvocation
     public String uploadQuote() {
-        if (quoteToBeUploaded != null && samurai != null) {
-            imageService.uploadQuote(quoteToBeUploaded, samurai);
-        }
+        if (samurai != null) {
+            quoteService.addQuote(samurai);
 
-        return "samuraiDetails?faces-redirect=true&samuraiId=" + this.samurai.getId();
+        }
+        return "samuraiDetails?faces-redirect=true&samuraiId=" + samurai.getId();
+
     }
 
     @Transactional
