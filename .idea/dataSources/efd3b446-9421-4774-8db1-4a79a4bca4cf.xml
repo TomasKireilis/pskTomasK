@@ -179,35 +179,40 @@
     <sequence id="164" parent="4" name="HIBERNATE_SEQUENCE">
       <ObjectId>16</ObjectId>
     </sequence>
-    <table id="165" parent="4" name="BATTLE">
+    <sequence id="165" parent="4" name="SYSTEM_SEQUENCE_6396C501_11AC_4E3F_9D93_14FEE355D949">
+      <ObjectId>24</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <AutoCreated>1</AutoCreated>
+    </sequence>
+    <table id="166" parent="4" name="BATTLE">
       <ObjectId>3</ObjectId>
     </table>
-    <table id="166" parent="4" name="BATTLE_SAMURAI">
+    <table id="167" parent="4" name="BATTLE_SAMURAI">
       <ObjectId>6</ObjectId>
     </table>
-    <table id="167" parent="4" name="SAMURAI">
-      <ObjectId>7</ObjectId>
+    <table id="168" parent="4" name="SAMURAI">
+      <ObjectId>25</ObjectId>
     </table>
-    <table id="168" parent="4" name="SAMURAIQUOTE">
+    <table id="169" parent="4" name="SAMURAIQUOTE">
       <ObjectId>11</ObjectId>
     </table>
-    <table id="169" parent="4" name="SAMURAI_SAMURAIQUOTE">
+    <table id="170" parent="4" name="SAMURAI_SAMURAIQUOTE">
       <ObjectId>10</ObjectId>
     </table>
-    <column id="170" parent="165" name="ID">
+    <column id="171" parent="166" name="ID">
       <Position>1</Position>
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="171" parent="165" name="CREATIONDATE">
+    <column id="172" parent="166" name="CREATIONDATE">
       <Position>2</Position>
       <DataType>TIMESTAMP|0s</DataType>
     </column>
-    <column id="172" parent="165" name="NAME">
+    <column id="173" parent="166" name="NAME">
       <Position>3</Position>
       <DataType>VARCHAR(255)|0s</DataType>
     </column>
-    <index id="173" parent="165" name="PRIMARY_KEY_7">
+    <index id="174" parent="166" name="PRIMARY_KEY_7">
       <ObjectId>4</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>60</SourceTextLength>
@@ -215,61 +220,62 @@
       <Unique>1</Unique>
       <AutoCreated>1</AutoCreated>
     </index>
-    <column id="174" parent="166" name="BATTLE_ID">
+    <column id="175" parent="167" name="BATTLE_ID">
       <Position>1</Position>
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="175" parent="166" name="SAMURAIS_ID">
+    <column id="176" parent="167" name="SAMURAIS_ID">
       <Position>2</Position>
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="176" parent="166" name="FKMLMYI77D9SFQON1YH0YXDK5FF_INDEX_C">
+    <index id="177" parent="167" name="FKMLMYI77D9SFQON1YH0YXDK5FF_INDEX_C">
       <ObjectId>19</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>91</SourceTextLength>
       <ColNames>BATTLE_ID</ColNames>
       <AutoCreated>1</AutoCreated>
     </index>
-    <index id="177" parent="166" name="FK1HGVLXS8G0WH1CQRJSG9A2GKE_INDEX_C">
+    <index id="178" parent="167" name="FK1HGVLXS8G0WH1CQRJSG9A2GKE_INDEX_C">
       <ObjectId>17</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>93</SourceTextLength>
       <ColNames>SAMURAIS_ID</ColNames>
       <AutoCreated>1</AutoCreated>
     </index>
-    <column id="178" parent="167" name="ID">
+    <column id="179" parent="168" name="ID">
       <Position>1</Position>
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="179" parent="167" name="NAME">
+    <column id="180" parent="168" name="NAME">
       <Position>2</Position>
       <DataType>VARCHAR(255)|0s</DataType>
     </column>
-    <index id="180" parent="167" name="PRIMARY_KEY_9">
-      <ObjectId>8</ObjectId>
+    <index id="181" parent="168" name="PRIMARY_KEY_1">
+      <ObjectId>26</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>61</SourceTextLength>
       <ColNames>ID</ColNames>
       <Unique>1</Unique>
       <AutoCreated>1</AutoCreated>
     </index>
-    <column id="181" parent="168" name="ID">
+    <column id="182" parent="169" name="ID">
       <Position>1</Position>
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="182" parent="168" name="SAMURAIID">
+    <column id="183" parent="169" name="SAMURAIID">
       <Position>2</Position>
       <DataType>BIGINT|0s</DataType>
     </column>
-    <column id="183" parent="168" name="TEXT">
+    <column id="184" parent="169" name="TEXT">
       <Position>3</Position>
       <DataType>VARCHAR(255)|0s</DataType>
     </column>
-    <index id="184" parent="168" name="PRIMARY_KEY_3">
+    <index id="185" parent="169" name="PRIMARY_KEY_3">
       <ObjectId>12</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>66</SourceTextLength>
@@ -277,17 +283,17 @@
       <Unique>1</Unique>
       <AutoCreated>1</AutoCreated>
     </index>
-    <column id="185" parent="169" name="SAMURAI_ID">
+    <column id="186" parent="170" name="SAMURAI_ID">
       <Position>1</Position>
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="186" parent="169" name="QUOTES_ID">
+    <column id="187" parent="170" name="QUOTES_ID">
       <Position>2</Position>
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="187" parent="169" name="UK_GFFH5UE8NQ7AKWN9BTSRAL0T0_INDEX_6">
+    <index id="188" parent="170" name="UK_GFFH5UE8NQ7AKWN9BTSRAL0T0_INDEX_6">
       <ObjectId>14</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>105</SourceTextLength>
@@ -295,7 +301,7 @@
       <Unique>1</Unique>
       <AutoCreated>1</AutoCreated>
     </index>
-    <index id="188" parent="169" name="FK7FWJ868FE6HP5EE8P8UBG48D9_INDEX_6">
+    <index id="189" parent="170" name="FK7FWJ868FE6HP5EE8P8UBG48D9_INDEX_6">
       <ObjectId>22</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>98</SourceTextLength>
