@@ -9,11 +9,13 @@ import lombok.Setter;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.io.Console;
 import java.util.List;
+import java.util.Map;
 
 
 @Model
@@ -35,6 +37,7 @@ public class Samurais {
     public void init(){
         samuraiToCreate = new Samurai();
         loadAllSamurais();
+
     }
 
     @Transactional
@@ -52,4 +55,6 @@ public class Samurais {
     private void loadAllSamurais(){
         this.allSamurais = samuraisMapper.selectAll();
     }
+
+
 }

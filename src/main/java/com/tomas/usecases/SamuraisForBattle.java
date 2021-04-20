@@ -7,7 +7,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.io.Serializable;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import com.tomas.entities.Samurai;
 import com.tomas.interceptors.LoggedInvocation;
@@ -37,6 +38,10 @@ public class SamuraisForBattle implements Serializable {
     @Setter
     private String samuraiIdToBeAdded;
 
+    @Getter
+    @Setter
+    private List<Samurai> availableSamurais;
+
     @PostConstruct
     public void init() {
         Map<String, String> requestParameters =
@@ -48,6 +53,7 @@ public class SamuraisForBattle implements Serializable {
             Long battleId = Long.parseLong(battleIdString);
             this.battle = battlesDAO.findOne(battleId);
         }
+        addExistingSamurais();
     }
 
     @Transactional
@@ -70,4 +76,21 @@ public class SamuraisForBattle implements Serializable {
 
        return "battleDetails?battleId=" + this.battle.getId();
     }
+
+    @Transactional
+    @LoggedInvocation
+    public void addExistingSamurais() {
+            List<Samurai> existingSamurais = battle.getSamurais();
+            List<Samurai> allSamurai = samuraisDAO.loadAll();
+
+      availableSamurais = allSamurai.stream()
+                .filter(c -> !existingSamurais.contains(c)) .collect(Collectors.toList());
+//            for (Samurai sam: allSamurai) {
+//                if(!existingSamurais.contains(sam)){
+//                    availableSamurais.add(sam);
+//                }
+//            }
+    }
+
+
 }

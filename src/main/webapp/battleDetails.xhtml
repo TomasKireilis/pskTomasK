@@ -17,7 +17,7 @@
 
     <h:form>
         <h:selectOneListbox value="#{samuraisForBattle.samuraiIdToBeAdded}">
-            <f:selectItems value="#{samurais.allSamurais}" var="samurai"
+            <f:selectItems value="#{samuraisForBattle.availableSamurais}" var="samurai"
                            itemLabel="#{samurai.id} #{samurai.name}" itemValue="#{samurai.id}" />
         </h:selectOneListbox>
         <h:commandButton value="Add new samurai to battle" action="#{samuraisForBattle.addSamurai}">
