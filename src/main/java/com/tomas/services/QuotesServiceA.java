@@ -5,6 +5,7 @@ import com.tomas.entities.SamuraiQuote;
 import com.tomas.persistence.SamuraisDAO;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 import javax.servlet.http.Part;
 import java.awt.image.BufferedImage;
@@ -14,7 +15,8 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 @ApplicationScoped
-public class QuotesService {
+@Alternative
+public class QuotesServiceA implements IQuoteService{
 
     @Inject
     private SamuraisDAO samuraisDAO;

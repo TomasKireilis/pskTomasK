@@ -4,7 +4,9 @@ import com.tomas.entities.Battle;
 import com.tomas.entities.Samurai;
 import com.tomas.interceptors.LoggedInvocation;
 import com.tomas.persistence.SamuraisDAO;
-import com.tomas.services.QuotesService;
+import com.tomas.services.IQuoteService;
+import com.tomas.services.IdService;
+import com.tomas.services.QuotesServiceB;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,7 +28,8 @@ public class SamuraiDetails implements Serializable {
     @Inject
     private SamuraisDAO samuraisDAO;
     @Inject
-    private QuotesService quoteService;
+    private IQuoteService quoteService;
+
 
 
     private Battle battle;

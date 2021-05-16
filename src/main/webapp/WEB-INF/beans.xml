@@ -9,4 +9,8 @@
     <interceptors>
         <class>com.tomas.interceptors.MethodLogger</class>
     </interceptors>
+
+        <alternatives>
+            <class>com.tomas.services.QuotesServiceB</class>
+        </alternatives>
 </beans>
