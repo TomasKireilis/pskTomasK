@@ -7,7 +7,7 @@
         bean-discovery-mode="annotated">
 
     <interceptors>
-        <class>com.tomas.interceptors.MethodLogger</class>
+        <class>com.tomas.interceptors.MethodLoggerImp</class>
     </interceptors>
     <decorators>
         <class>

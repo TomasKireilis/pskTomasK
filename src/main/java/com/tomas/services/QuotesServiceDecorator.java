@@ -4,6 +4,7 @@ import com.tomas.entities.Samurai;
 import com.tomas.entities.SamuraiQuote;
 import com.tomas.persistence.SamuraisDAO;
 
+import javax.decorator.Decorator;
 import javax.decorator.Delegate;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
@@ -12,8 +13,7 @@ import javax.inject.Inject;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-@ApplicationScoped
-@Alternative
+@Decorator
 public class QuotesServiceDecorator implements IQuoteService{
 
     @Inject @Delegate
@@ -22,11 +22,12 @@ public class QuotesServiceDecorator implements IQuoteService{
 
     @Override
     public void addQuote(Samurai samurai) {
-        if(samurai.getName()!="kebabas"){
+        String name = samurai.getName();
+        if(!(name.equals("kebabas"))){
             quoteService.addQuote(samurai);
             return;
         }
-        throw new IllegalStateException("kebabas cannot have qoutes");
+        throw new IllegalArgumentException("intensional program design error. kebabas cannot have qoutes");
 
     }
 }
