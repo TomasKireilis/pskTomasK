@@ -1,16 +1,10 @@
 package com.tomas.interceptors;
 
-import javax.interceptor.AroundInvoke;
-import javax.interceptor.Interceptor;
-import javax.interceptor.InvocationContext;
-import java.io.Serializable;
+import javax.interceptor.InterceptorBinding;
+import java.lang.annotation.*;
 
-@Interceptor
-@LoggedInvocation
-public class MethodLogger implements Serializable{
-    @AroundInvoke
-    public Object logMethodInvocation(InvocationContext context) throws Exception {
-        System.out.println("Called method: " + context.getMethod().getName());
-        return context.proceed();
-    }
+@InterceptorBinding
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.METHOD, ElementType.TYPE})
+public @interface MethodLogger {
 }

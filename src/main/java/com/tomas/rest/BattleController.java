@@ -40,24 +40,24 @@ public class BattleController {
         return Response.ok(battleDto).build();
     }
 
-    @Path("/{id}")
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Transactional
-    public Response update(
-            @PathParam("id") final Integer playerId,
-            PlayerDto playerData) {
-        try {
-            Player existingPlayer = battlesDAO.findOne(playerId);
-            if (existingPlayer == null) {
-                return Response.status(Response.Status.NOT_FOUND).build();
-            }
-            existingPlayer.setName(playerData.getName());
-            existingPlayer.setJerseyNumber(playerData.getJerseyNumber());
-            battlesDAO.update(existingPlayer);
-            return Response.ok().build();
-        } catch (OptimisticLockException ole) {
-            return Response.status(Response.Status.CONFLICT).build();
-        }
-    }
+//    @Path("/{id}")
+//    @PUT
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Transactional
+//    public Response update(
+//            @PathParam("id") final Integer playerId,
+//            PlayerDto playerData) {
+//        try {
+//            Player existingPlayer = battlesDAO.findOne(playerId);
+//            if (existingPlayer == null) {
+//                return Response.status(Response.Status.NOT_FOUND).build();
+//            }
+//            existingPlayer.setName(playerData.getName());
+//            existingPlayer.setJerseyNumber(playerData.getJerseyNumber());
+//            battlesDAO.update(existingPlayer);
+//            return Response.ok().build();
+//        } catch (OptimisticLockException ole) {
+//            return Response.status(Response.Status.CONFLICT).build();
+//        }
+//    }
 }

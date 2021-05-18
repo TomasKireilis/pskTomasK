@@ -11,7 +11,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.tomas.entities.Samurai;
-import com.tomas.interceptors.LoggedInvocation;
 import com.tomas.persistence.SamuraisDAO;
 import lombok.Getter;
 import lombok.Setter;
@@ -57,7 +56,6 @@ public class SamuraisForBattle implements Serializable {
     }
 
     @Transactional
-    @LoggedInvocation
     public String addSamurai() {
 
         try {
@@ -78,7 +76,6 @@ public class SamuraisForBattle implements Serializable {
     }
 
     @Transactional
-    @LoggedInvocation
     public void addExistingSamurais() {
             List<Samurai> existingSamurais = battle.getSamurais();
             List<Samurai> allSamurai = samuraisDAO.loadAll();

@@ -9,6 +9,11 @@
     <interceptors>
         <class>com.tomas.interceptors.MethodLogger</class>
     </interceptors>
+    <decorators>
+        <class>
+            com.tomas.services.QuotesServiceDecorator
+        </class>
+    </decorators>
 
         <alternatives>
             <class>com.tomas.services.QuotesServiceB</class>

@@ -2,7 +2,6 @@ package com.tomas.usecases;
 
 import com.tomas.entities.Battle;
 import com.tomas.entities.Samurai;
-import com.tomas.interceptors.LoggedInvocation;
 import com.tomas.persistence.SamuraisDAO;
 import com.tomas.services.IQuoteService;
 import com.tomas.services.IdService;
@@ -61,7 +60,6 @@ public class SamuraiDetails implements Serializable {
     }
 
     @Transactional
-    @LoggedInvocation
     public String uploadQuote() {
         if (samurai != null) {
             quoteService.addQuote(samurai);
@@ -72,7 +70,6 @@ public class SamuraiDetails implements Serializable {
     }
 
     @Transactional
-    @LoggedInvocation
     public String addSamurai(Samurai samurai) {
         samuraisDAO.persist(samurai);
         return "samuraiDetails?faces-redirect=true&samuraiId=" + this.samurai.getId();

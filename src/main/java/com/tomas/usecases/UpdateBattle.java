@@ -1,7 +1,5 @@
 package com.tomas.usecases;
 
-
-import com.tomas.interceptors.LoggedInvocation;
 import lombok.Getter;
 import lombok.Setter;
 import com.tomas.entities.Samurai;
