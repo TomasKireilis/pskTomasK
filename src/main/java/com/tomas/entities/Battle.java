@@ -22,6 +22,7 @@ public class Battle implements Serializable {
     @Setter
     @Column(name = "name")
     private String name;
+    @Setter
     private Date creationDate;
     @ManyToMany(targetEntity = Samurai.class)
     List<Samurai> samurais = new ArrayList<>();
