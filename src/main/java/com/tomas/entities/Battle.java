@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static javax.persistence.LockModeType.WRITE;
+
 @Entity
 @Table(name = "BATTLE")
 @Getter
@@ -22,6 +24,10 @@ public class Battle implements Serializable {
     @Setter
     @Column(name = "name")
     private String name;
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    @Setter
+    private Integer version;
     @Setter
     private Date creationDate;
     @ManyToMany(targetEntity = Samurai.class)

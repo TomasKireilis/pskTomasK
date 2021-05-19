@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.persistence.LockModeType;
 import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
@@ -42,6 +43,8 @@ public class BattleController {
         return Response.ok(battleDto).build();
     }
 
+
+
     @Path("/{id}")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)  @Transactional
@@ -49,14 +52,38 @@ public class BattleController {
     public Response update(@PathParam("id") final long id, BattleDto data) {
         try {
             Battle existingBattle = battlesDAO.findOne(id);
+
             if (existingBattle == null) {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
+            String name=existingBattle.getName();
             existingBattle.setName(data.getName());
             existingBattle.setCreationDate(data.getCreationDate());
             battlesDAO.update(existingBattle);
             return Response.ok().build();
         } catch (OptimisticLockException ole) {
+            return Response.status(Response.Status.CONFLICT).build();
+        }
+    }
+
+    @Path("/b/{id}")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)  @Transactional
+
+    public Response updateB(@PathParam("id") final long id, BattleDto data) {
+        try {
+            Battle existingBattle = battlesDAO.findOne(id);
+
+            if (existingBattle == null) {
+                return Response.status(Response.Status.NOT_FOUND).build();
+            }
+            String name=existingBattle.getName();
+            Thread.sleep(4000);
+            existingBattle.setName(data.getName());
+            existingBattle.setCreationDate(data.getCreationDate());
+            battlesDAO.update(existingBattle);
+            return Response.ok().build();
+        } catch (OptimisticLockException | InterruptedException ex) {
             return Response.status(Response.Status.CONFLICT).build();
         }
     }

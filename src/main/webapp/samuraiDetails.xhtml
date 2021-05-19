@@ -2,7 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
 >
 <h:head/>
 <h:body>
@@ -22,8 +22,12 @@
         <h:commandButton value="Generate qoute" action="#{samuraiDetails.uploadQuote}">
         </h:commandButton>
     </h:form>
-
+    <h:form>
+    <h:outputText value="status #{samuraiRandomLongQuote.generateQuoteStatus}  " />
+    <h:commandButton value="Generate Samurai Random Long Quote" disabled="status #{samuraiRandomLongQuote.generateQuoteStatus}" action="#{samuraiRandomLongQuote.generateQuote}">
+        <f:param name="samuraiId" value="#{samuraiDetails.samurai.id}" />
+    </h:commandButton>
     <h:link outcome="samurais" value="Back to samurais page"/>
-
+</h:form>
 </h:body>
 </html>
