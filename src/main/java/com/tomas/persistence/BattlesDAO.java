@@ -26,6 +26,8 @@ public class BattlesDAO {
     }
 
     public Battle update(Battle battle){
-        return em.merge(battle);
+        battle  =  em.merge(battle);
+        em.flush();
+        return battle;
     }
 }
